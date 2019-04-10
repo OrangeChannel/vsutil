@@ -26,23 +26,30 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "setup.py" }}
+          - v2-dependencies-{{ checksum "setup.py" }}
           # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+          - v2-dependencies-
 
       - run:
           name: install dependencies
           command: |
             python3 -m venv venv
             . venv/bin/activate
+            pip install unittest-xml-reporting
             pip install .
       - save_cache:
           paths:
             - ./venv
-          key: v1-dependencies-{{ checksum "setup.py" }}
+          key: v2-dependencies-{{ checksum "setup.py" }}
 
       - run:
           name: run tests
           command: |
             . venv/bin/activate
-            python setup.py test
+            python -m xmlrunner -s ./tests -o test-results
+            
+      - store_test_results:
+          path: test-reports
+
+      - store_artifacts:
+          path: test-reports 
