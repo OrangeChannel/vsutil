@@ -46,7 +46,7 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            python -m xmlrunner -s ./tests -o test-results
+            python -m xmlrunner discover -s ./tests -o test-results
             
       - store_test_results:
           path: test-reports
