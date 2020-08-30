@@ -22,6 +22,8 @@ def disallow_variable_format(function: F) -> F:
     """Function decorator that raises an exception if the input clip has a variable format.
 
     Decorated `function`'s first parameter must be of type ``vapoursynth.VideoNode`` and is the only parameter checked.
+
+    .. versionadded:: 0.4.0
     """
 
     @functools.wraps(function)
@@ -37,6 +39,8 @@ def disallow_variable_resolution(function: F) -> F:
     """Function decorator that raises an exception if the input clip has a variable resolution.
 
     Decorated `function`'s first parameter must be of type ``vapoursynth.VideoNode`` and is the only parameter checked.
+
+    .. versionadded:: 0.4.0
     """
 
     @functools.wraps(function)

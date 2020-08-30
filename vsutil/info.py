@@ -75,6 +75,9 @@ def get_subsampling(clip: vs.VideoNode, /) -> Union[None, str]:
     :param clip:  Input clip.
 
     :return:      Subsampling of the input `clip` as a string (i.e. ``'420'``) or ``None``.
+
+    .. versionchanged:: 0.3.0
+        Returns ``None`` for formats without subsampling (i.e. RGB).
     """
     if clip.format.color_family not in (vs.YUV, vs.YCOCG):
         return None
@@ -154,6 +157,8 @@ def scale_value(value: Union[int, float],
     :param chroma:        Whether or not to treat values as chroma instead of luma.
 
     :return:              Scaled numeric value.
+
+    .. versionadded:: 0.5.0
     """
     range_in = types._resolve_enum(types.Range, range_in, 'range_in', scale_value)
     range = types._resolve_enum(types.Range, range, 'range', scale_value)

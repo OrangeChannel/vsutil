@@ -50,6 +50,8 @@ def depth(clip: vs.VideoNode,
         See `_should_dither()` comments for more information.
 
     :return:             Converted clip with desired bit depth and sample type. ``ColorFamily`` will be same as input.
+
+    .. versionadded:: 0.3.0
     """
     sample_type = types._resolve_enum(vs.SampleType, sample_type, 'sample_type', depth)
     range = types._resolve_enum(types.Range, range, 'range', depth)
@@ -77,6 +79,9 @@ def frame2clip(frame: vs.VideoFrame, /, *, enforce_cache=True) -> vs.VideoNode:
     :param enforce_cache:  Forcibly add a cache, even if the ``vapoursynth`` module has this feature disabled.
 
     :return: A one-frame clip that yields the `frame` passed to the function.
+
+    .. versionchanged:: 0.2.0
+        Added `enforce_cache` parameter.
     """
     bc = core.std.BlankClip(
         width=frame.width,
