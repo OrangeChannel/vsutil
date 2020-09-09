@@ -10,11 +10,11 @@ Functions that return a clip
 
 .. autofunction:: vsutil.depth
 
-    .. versionadded:: 0.3.0
+    .. versionadded2:: 0.3.0
 
 .. autofunction:: vsutil.frame2clip
 
-    .. versionchanged:: 0.2.0
+    .. versionchanged2:: 0.2.0
         Added *enforce_cache* parameter.
 
 .. autofunction:: vsutil.get_y
